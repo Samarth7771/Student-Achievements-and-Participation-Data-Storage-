@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Student Achievement Portal</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="topbar">
+
+    <div class="college-brand">
+
+      <!-- College Logo -->
+      <img
+        src="c:\Users\Samarth Bhandure\OneDrive\Documents\WP Project\logo.png.png"
+        alt="College Logo"
+        class="college-logo"
+      >
+
+      <div>
+        <p class="eyebrow">College Achievement Portal</p>
+
+        <h1>Student Achievement Management System</h1>
+
+        <p class="college-subtitle">
+          Manage and record student academic achievements
+        </p>
+      </div>
+
+    </div>
+
+    <button
+      id="logoutBtn"
+      class="secondary logout-btn hidden">
+      Logout
+    </button>
+
+  </header>
+
+
+  <main class="page-shell">
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <!-- ================= LOGIN SECTION ================= -->
+
+<section id="loginSection" class="login-page">
+
+    <div class="login-background-logo"></div>
+
+    <div class="login-container">
+
+        <!-- College Logo -->
+
+        <div class="login-college-logo">
+
+            <img
+                src="c:\Users\Samarth Bhandure\OneDrive\Documents\WP Project\logo.png.png"
+                alt="Vidyalankar School of Information Technology"
+            >
+
+        </div>
+
+
+        <!-- Heading -->
+
+        <div class="login-heading">
+
+            <span class="section-label">
+                STUDENT ACHIEVEMENT PORTAL
+            </span>
+
+            <h2>
+                Welcome to Achievement Management System
+            </h2>
+
+            <p>
+                Select your account type to continue
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN TYPE CARDS -->
+
+        <div class="login-type-container">
+
+
+            <!-- TEACHER -->
+
+            <button
+                type="button"
+                class="login-type-card teacher-card"
+                onclick="selectLoginType('teacher')">
+
+                <div class="login-photo">
+
+                    <img
+                        src="c:\Users\Samarth Bhandure\OneDrive\Documents\WP Project\teacher.jpg.jpg"
+                        alt="Teacher Login"
+                    >
+
+                </div>
+
+                <div class="login-card-content">
+
+                    <h3>
+                        Teacher Login
+                    </h3>
+
+                    <p>
+                        Manage student achievement records,
+                        view reports and manage academic-year data.
+                    </p>
+
+                    <span class="login-card-button">
+                        Continue as Teacher →
+                    </span>
+
+                </div>
+
+            </button>
+
+
+            <!-- STUDENT -->
+
+            <button
+                type="button"
+                class="login-type-card student-card"
+                onclick="selectLoginType('student')">
+
+                <div class="login-photo">
+
+                    <img
+                        src="c:\Users\Samarth Bhandure\OneDrive\Documents\WP Project\student.png.png"
+                        alt="Student Login"
+                    >
+
+                </div>
+
+                <div class="login-card-content">
+
+                    <h3>
+                        Student Login
+                    </h3>
+
+                    <p>
+                        Submit your achievements and view
+                        only your own achievement records.
+                    </p>
+
+                    <span class="login-card-button">
+                        Continue as Student →
+                    </span>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <div
+            id="loginFormContainer"
+            class="login-form-container hidden">
+
+            <button
+                type="button"
+                class="back-login-button"
+                onclick="showLoginSelection()">
+
+                ← Back to Login Selection
+
+            </button>
+
+
+            <div class="selected-login-title">
+
+                <div
+                    id="selectedLoginIcon"
+                    class="selected-login-icon">
+                </div>
+
+                <div>
+
+                    <span class="section-label">
+                        SECURE LOGIN
+                    </span>
+
+                    <h2 id="selectedLoginTitle">
+                        Login
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <!-- Hidden login type -->
+
+                <input
+                    type="hidden"
+                    id="loginType"
+                    value=""
+                >
+
+
+                <label>
+
+                    <span id="usernameLabel">
+                        Username
+                    </span>
+
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        placeholder="Enter username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Password
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary login-submit">
+
+                    Login
+
+                </button>
+
+
+                <p
+                    id="loginHelp"
+                    class="login-help">
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+          
+
+    <!-- ================= APPLICATION ================= -->
+
+    <section
+      id="appSection"
+      class="app hidden">
+
+
+      <!-- ================= USER INFO ================= -->
+
+      <div class="welcome-card">
+
+        <div>
+
+          <p class="eyebrow">
+            Welcome
+          </p>
+
+          <h2 id="welcomeName">
+            Student
+          </h2>
+
+          <p id="welcomeInfo">
+            Achievement Portal
+          </p>
+
+        </div>
+
+        <span
+          id="roleBadge"
+          class="role-badge">
+          Student
+        </span>
+
+      </div>
+
+
+      <!-- ================= STATISTICS ================= -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <span>Total Achievements</span>
+
+          <strong id="totalRecords">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span>Academic</span>
+
+          <strong id="academicCount">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span>Technical</span>
+
+          <strong id="technicalCount">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <span>Other Activities</span>
+
+          <strong id="miscCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= FORM ================= -->
+
+      <div class="content-grid">
+
+
+        <section
+          id="studentFormPanel"
+          class="panel form-panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <span class="section-label">
+                Achievement Submission
+              </span>
+
+              <h2 class="form-title">
+                Add Student Achievement Record
+              </h2>
+
+              <p class="form-description">
+                Enter the details of the student's achievement
+                carefully.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <form id="recordForm">
+
+
+            <!-- Student Details -->
+
+            <div class="form-row two-col">
+
+              <div class="field">
+
+                <label for="studentName">
+                  Student Name
+                </label>
+
+                <input
+                  type="text"
+                  id="studentName"
+                  placeholder="Student Name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="rollNumber">
+                  Roll Number
+                </label>
+
+                <input
+                  type="text"
+                  id="rollNumber"
+                  placeholder="Roll Number"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- Class and Category -->
+
+            <div class="form-row two-col">
+
+              <div class="field">
+
+                <label for="classDept">
+                  Class / Department
+                </label>
+
+                <input
+                  type="text"
+                  id="classDept"
+                  placeholder="Example: FYIT F"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="category">
+                  Category
+                </label>
+
+                <select id="category" required>
+
+                  <option value="">
+                    Select Category
+                  </option>
+
+                  <option value="Academic">
+                    Academic
+                  </option>
+
+                  <option value="Technical">
+                    Technical
+                  </option>
+
+                  <option value="Sports">
+                    Sports
+                  </option>
+
+                  <option value="Cultural">
+                    Cultural
+                  </option>
+
+                  <option value="Extracurricular">
+                    Extracurricular
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- Event and Level -->
+
+            <div class="form-row two-col">
+
+              <div class="field">
+
+                <label for="eventName">
+                  Event / Competition
+                </label>
+
+                <input
+                  type="text"
+                  id="eventName"
+                  placeholder="Event name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="level">
+                  Level
+                </label>
+
+                <select id="level" required>
+
+                  <option value="">
+                    Select Level
+                  </option>
+
+                  <option value="College">
+                    College
+                  </option>
+
+                  <option value="University">
+                    University
+                  </option>
+
+                  <option value="District">
+                    District
+                  </option>
+
+                  <option value="State">
+                    State
+                  </option>
+
+                  <option value="National">
+                    National
+                  </option>
+
+                  <option value="International">
+                    International
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- Date and Academic Year -->
+
+            <div class="form-row two-col">
+
+              <div class="field">
+
+                <label for="achievementDate">
+                  Achievement Date
+                </label>
+
+                <input
+                  type="date"
+                  id="achievementDate"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="academicYear">
+                  Academic Year
+                </label>
+
+                <select
+                  id="academicYear"
+                  required>
+
+                  <option value="">
+                    Select Academic Year
+                  </option>
+
+                  <option value="2024-25">
+                    2024-25
+                  </option>
+
+                  <option value="2025-26">
+                    2025-26
+                  </option>
+
+                  <option value="2026-27">
+                    2026-27
+                  </option>
+
+                  <option value="2027-28">
+                    2027-28
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- Result -->
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="result">
+                  Result / Position
+                </label>
+
+                <input
+                  type="text"
+                  id="result"
+                  placeholder="Example: 1st Prize"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- Description -->
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="description">
+                  Achievement Description
+                </label>
+
+                <textarea
+                  id="description"
+                  rows="5"
+                  placeholder="Describe the achievement..."
+                  required></textarea>
+
+              </div>
+
+            </div>
+
+
+            <!-- Certificate -->
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="certificate">
+                  Certificate / Document
+                </label>
+
+                <input
+                  type="file"
+                  id="certificate"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div
+              id="successMessage"
+              class="success-box hidden">
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="form-actions">
+
+              <button
+                type="submit"
+                class="primary">
+
+                Save Achievement
+
+              </button>
+
+              <button
+                type="button"
+                id="resetFormBtn"
+                class="secondary">
+
+                Clear
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </section>
+
+
+        <!-- ================= RECORDS ================= -->
+
+        <section
+          id="recordsPanel"
+          class="panel list-panel">
+
+          <div class="panel-header">
+
+            <span class="section-label">
+              Achievement Records
+            </span>
+
+            <h2>
+              Student Achievements
+            </h2>
+
+          </div>
+
+
+          <div class="toolbar">
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search student, roll number or achievement..."
+            >
+
+
+            <select id="filterCategory">
+
+              <option value="All">
+                All Categories
+              </option>
+
+              <option value="Academic">
+                Academic
+              </option>
+
+              <option value="Technical">
+                Technical
+              </option>
+
+              <option value="Sports">
+                Sports
+              </option>
+
+              <option value="Cultural">
+                Cultural
+              </option>
+
+              <option value="Extracurricular">
+                Extracurricular
+              </option>
+
+            </select>
+
+
+            <select id="filterAcademicYear">
+
+              <option value="All">
+                All Academic Years
+              </option>
+
+              <option value="2024-25">
+                2024-25
+              </option>
+
+              <option value="2025-26">
+                2025-26
+              </option>
+
+              <option value="2026-27">
+                2026-27
+              </option>
+
+              <option value="2027-28">
+                2027-28
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div
+            id="recordsList"
+            class="records-list">
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ================= REPORTS ================= -->
+
+      <section
+        id="reportsSection"
+        class="panel reports-panel">
+
+        <div class="reports-header">
+
+          <div>
+
+            <span class="section-label">
+              Academic Reports
+            </span>
+
+            <h2>
+              Achievement Report
+            </h2>
+
+            <p>
+              View achievement records according to
+              academic year.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="report-controls">
+
+          <div class="field">
+
+            <label for="reportAcademicYear">
+              Select Academic Year
+            </label>
+
+            <select id="reportAcademicYear">
+
+              <option value="All">
+                All Academic Years
+              </option>
+
+              <option value="2024-25">
+                2024-25
+              </option>
+
+              <option value="2025-26">
+                2025-26
+              </option>
+
+              <option value="2026-27">
+                2026-27
+              </option>
+
+              <option value="2027-28">
+                2027-28
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            id="generateReportBtn"
+            class="primary">
+
+            Generate Report
+
+          </button>
+
+        </div>
+
+
+        <!-- Report Summary -->
+
+        <div
+          id="reportSummary"
+          class="report-summary hidden">
+
+          <div>
+
+            <span>
+              Academic Year
+            </span>
+
+            <strong id="reportYear">
+              -
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Total Achievements
+            </span>
+
+            <strong id="reportTotal">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- Report Table -->
+
+        <div class="table-container">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Sr.</th>
+                <th>Student</th>
+                <th>Roll No.</th>
+                <th>Category</th>
+                <th>Achievement</th>
+                <th>Level</th>
+                <th>Result</th>
+                <th>Academic Year</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="reportTableBody">
+
+              <tr>
+
+                <td
+                  colspan="8"
+                  class="empty-table">
+
+                  Select an academic year and
+                  generate the report.
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="footer">
+
+    <div>
+
+      <strong>
+        Student Achievement Management System
+      </strong>
+
+      <p>
+        College Student Achievement Portal
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="#reportsSection">
+        Reports
+      </a>
+
+      <a href="#studentFormPanel">
+        Achievement Form
+      </a>
+
+    </div>
+
+    <p class="copyright">
+      © 2026 College. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
