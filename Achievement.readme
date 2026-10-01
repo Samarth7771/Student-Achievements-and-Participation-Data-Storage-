@@ -1,0 +1,35 @@
+# Student Achievements and Participation Data Storage
+
+This project is a lightweight web application for storing and managing student achievement records. It supports:
+
+- add, update, and delete records
+- search and filter by category
+- academic, technical, sports, cultural, and extracurricular categories
+- certificate/document upload using browser file input
+- basic admin login for authorized users
+- local browser storage for persistence
+
+## Run locally
+
+From this project folder, run:
+
+```bash
+python -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000
+```
+
+## Default login
+
+- Email: admin@college.edu
+- Password: admin123
+
+## Project files
+
+- `index.html` – application layout
+- `styles.css` – interface design
+- `script.js` – records logic and local storage
